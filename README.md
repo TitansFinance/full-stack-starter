@@ -44,7 +44,7 @@ docker-compose -f docker-compose.production.yml up
 In production, images are orchestrated by Baremetal Kubernetes on Centos7.
 
 
-## CI / CD
+## Continuous Integration and Deployment
 
 1. Jenkins Pipeline watches repositories and builds images for development.
 2. Sets of images are hoisted by version to Staging.
