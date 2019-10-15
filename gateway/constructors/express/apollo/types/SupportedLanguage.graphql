@@ -1,0 +1,4 @@
+type SupportedLanguage {
+  key: String!
+  name: String!
+}
