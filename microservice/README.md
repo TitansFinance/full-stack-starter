@@ -2,16 +2,9 @@
 
 
 ## Dependencies
-- docker
-- node + npm
-- yarn
+- Docker
+- Docker Compose
 
-
-## Setup
-
-```bash
-yarn setup
-```
 
 ## File Structure
 
@@ -27,6 +20,13 @@ yarn setup
     ├── singletons - entrypoints for singletons
     └── constructors - entrypoints for classes and module constructors, such as Express, Sequelize, etc.
 
+```
+
+
+## Setup
+
+```bash
+yarn setup
 ```
 
 

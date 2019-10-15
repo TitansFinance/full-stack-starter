@@ -1,22 +1,9 @@
 # Gateway
 
 ## Dependencies
-- docker
-- docker-compose
+- Docker
+- Docker Compose
 
-## Setup
-
-```bash
-yarn setup
-```
-
-## Start
-
-```bash
-yarn dev
-open http://127.0.0.1:8000/graphql
-open http://127.0.0.1:8000/api/v1/health
-```
 
 ## File Structure
 
@@ -55,9 +42,24 @@ open http://127.0.0.1:8000/api/v1/health
 ```
 
 
+## Setup
+
+```bash
+yarn setup
+```
+
+## Start
+
+```bash
+yarn dev
+open http://127.0.0.1:8000/graphql
+open http://127.0.0.1:8000/api/v1/health
+```
+
+
 ## Migrations
 
-Sequelize migrations. Migrations run automatically on bootstrap when the related gateway migrations flag is enabled.
+Sequelize migrations. Migrations run automatically on bootstrap when the related gateway migrations flag (`MIGRATE_ON_BOOTSTRAP`) is enabled.
 
 If you want to trigger manually, execute migrations while docker containers are running:
 ```bash
@@ -74,9 +76,16 @@ See files:
 
 ```
 
+
 ## Seeds
 
-Sequelize seeds. Seeds run automatically on bootstrap when the related gateway seeds flag is enabled.
+Sequelize seeds. Seeds run automatically on bootstrap when the related gateway seeds flag (`SEED_ON_BOOTSTRAP`) is enabled.
+
+```bash
+docker-compose exec gateway yarn seed
+```
+
+
 
 See files:
 ```
@@ -86,10 +95,6 @@ See files:
              └── sequelize
                      └── seeders
 
-```
-
-```bash
-docker-compose exec gateway yarn seed
 ```
 
 

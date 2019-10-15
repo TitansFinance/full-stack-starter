@@ -7,10 +7,15 @@ A set of containerized, production-ready, fullstack web and microservice applica
 - Docker
 - Docker Compose
 
+or
+
+- NodeJS 10.x.x
+
 
 ## File Structure
 
 ```
+    .
     ├── gateway - NodeJS GraphQL gateway service
     ├── microservice - NodeJS Microservice template
     ├── webclient - NextJS Webclient and server rendering service
@@ -18,14 +23,18 @@ A set of containerized, production-ready, fullstack web and microservice applica
 ```
 
 
-## Build
+## Development
+
+Services can be run with docker / docker-compose, or individually via locally installed node.js.
+
+### Build
 
 ```bash
 docker-compose build
 ```
 
 
-## Run
+### Run
 
 ```bash
 docker-compose up
