@@ -109,6 +109,28 @@ yarn test:integration # matches ( test/integration/*.test.js | **/integration.t
 yarn test:integration:watch
 ```
 
+
+## Debugging Containers
+
+Sometimes containers need to be re-built, especially after new node_modules have been installed or updated.
+```bash
+docker-compose build --no-cache [SERVICE1, SERVICE2, SERVICE3]
+# Example:
+docker-compose build --no-cache # build all
+docker-compose build --no-cache ethereum-rpc-service # build one
+docker-compose build --no-cache ethereum-rpc-service wallet-service # build several
+```
+
+To enter a running container:
+```bash
+docker-compose exec CONTAINER_NAME bash
+# Example:
+docker-compose exec wallet-service bash
+docker-compose exec ethereum-rpc-service sh # for linux-based containers that only have sh installed
+docker-compose exec postgres psql -U postgres # for postgres
+```
+
+
 ## Notes and Links
 
 Internal
