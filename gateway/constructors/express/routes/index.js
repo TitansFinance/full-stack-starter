@@ -17,9 +17,5 @@ module.exports = context => {
     return res.status(200).send({ health: 'HEALTHY' })
   })
 
-  // router.get('*', (req, res, next) => {
-  //   res.status(404).send()
-  // })
-
   return router
 }
