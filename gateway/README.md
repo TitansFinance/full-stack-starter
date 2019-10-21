@@ -113,13 +113,8 @@ yarn test:integration:watch
 ## Notes and Links
 
 Internal
-- Docker Registry: https://repository.trustedlife.app
-- Docker Registry UI: https://repository-ui.trustedlife.app
-
-Ethereum Faucets
-- https://etherfaucet.xyz
-- https://testnet-faucet.mempool.co/
-
+- Docker Registry: https://registry.trustedlife.app
+- Docker Registry UI: https://registry-ui.trustedlife.app
 
 ## License
 
