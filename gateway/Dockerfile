@@ -1,12 +1,6 @@
-FROM node:10-alpine
+FROM registry.trustedlife.app/node-12-alpine:latest
 
 MAINTAINER Shain Lafazan
-
-RUN apk update -qq \
-  && apk add --no-cache git \
-  && apk add python \
-  && apk add --update alpine-sdk \
-  && apk add --no-cache bash
 
 RUN mkdir /app
 

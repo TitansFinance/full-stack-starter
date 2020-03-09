@@ -1,14 +1,8 @@
-FROM node:10-alpine
+FROM registry.trustedlife.app/node-12-alpine:latest
+
+MAINTAINER Shain Lafazan
 
 WORKDIR /app
-
-RUN apk add --no-cache \
-  python \
-  build-base \
-  git \
-  bash \
-  gettext \
-  && yarn global add node-gyp
 
 ADD . /app
 

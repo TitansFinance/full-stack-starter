@@ -1,0 +1,8 @@
+$error-message-height-offset: 3px
+
+.EditInput
+  &.WithLabel
+    .InnerTextButton
+      top: calc(50% + #{$error-message-height-offset})
+      transform: none
+  &:not(EditInput)

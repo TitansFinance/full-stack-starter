@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const requireModels = require('./models/index')
+const requireModels = require('./requireModels')
 
 const host = process.env.POSTGRES_HOST || '127.0.0.1'
 const port = process.env.POSTGRES_PORT || 5432
@@ -32,5 +32,5 @@ const sequelize = new Sequelize(
 module.exports = ({ modelsPath }) => ({
   sequelize,
   Sequelize,
-  models: requireModels({ sequelize, modelsPath }),
+  models: requireModels({ sequelize, Sequelize, modelsPath }),
 })

@@ -1,0 +1,56 @@
+@import '@/variables'
+
+$side-menu-width: 100vw
+$side-menu-nav-width: 80vw
+$side-menu-option-padding-width: 5vw
+$side-menu-option-icon-spacing: 5vw
+
+.SideMenu
+  display: flex
+  position: fixed
+  left: 0
+  top: 0
+  bottom: 0
+  z-index: 100001
+  transition: all 0.3s ease-in-out
+  transform: translateX(-$side-menu-width)
+  color: $side-menu-font-color
+  width: $side-menu-width
+  &.show
+    transform: none
+
+  .SideMenuNav
+    font-size: 1em
+    width: $side-menu-nav-width
+    background-color: $side-menu-color
+    overflow-y: scroll
+
+    .SideMenuOptionGrouping
+      padding: 1vh 0
+      &:last-child
+        padding-bottom: 0
+
+    .SideMenuOptionGroupingHeader
+      display: flex
+      align-items: center
+      padding: 20px 5vw
+      font-weight: 400
+
+    .SideMenuOption
+      cursor: pointer
+      display: flex
+      padding: 10px $side-menu-option-padding-width
+      align-items: center
+      // &.active
+      //   color: $side-menu-font-color-hover
+      //   background-color: $side-menu-color-hover
+
+      &.disabled, &.preview
+        color: darken($side-menu-font-color, 50)
+
+    .SideMenuOptionIcon
+      margin-right: $side-menu-option-icon-spacing
+      font-size: 1.6em
+
+  .SideMenuBackdrop
+    width: $side-menu-width - $side-menu-nav-width

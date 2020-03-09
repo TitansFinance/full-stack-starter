@@ -18,44 +18,73 @@ services:
     sysctls:
       net.core.somaxconn: "65535"
 
-  microservice:
-    image: registry.trustedlife.app/full-stack-starter-microservice
-    build:
-      context: ./microservice
-      dockerfile: Dockerfile
-    command: yarn dev
-    environment:
-      NODE_ENV: development
-      POSTGRES_USER: postgres
-      POSTGRES_HOST: postgres
-      POSTGRES_DATABASE: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_PORT: 5432
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-    depends_on:
-      - redis
-      - postgres
-    links:
-      - redis
-      - postgres
-    volumes:
-      - ./microservice:/app
-      - /app/node_modules
+  # microservice:
+  #   image: registry.trustedlife.app/full-stack-starter-microservice
+  #   build:
+  #     context: ./microservice
+  #     dockerfile: Dockerfile
+  #   command: yarn dev
+  #   environment:
+  #     NODE_ENV: development
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_HOST: postgres
+  #     POSTGRES_DATABASE: postgres
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_PORT: 5432
+  #     REDIS_HOST: redis
+  #     REDIS_PORT: 6379
+  #   depends_on:
+  #     - redis
+  #     - postgres
+  #   links:
+  #     - redis
+  #     - postgres
+  #   volumes:
+  #     - ./microservice:/app
+  #     - /app/node_modules
 
-  test-microservice:
-    build: ./microservice
-    command: yarn test --watchAll
-    environment:
-      NODE_ENV: test
-    volumes:
-      - ./microservice:/app
-      - /app/node_modules
+  # test-microservice:
+  #   build: ./microservice
+  #   command: yarn test --watchAll
+  #   environment:
+  #     NODE_ENV: test
+  #   volumes:
+  #     - ./microservice:/app
+  #     - /app/node_modules
+
+  # landing:
+  #   image: registry.trustedlife.app/full-stack-starter-landing
+  #   build:
+  #     context: ./landing
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     NODE_ENV: development
+  #     GATEWAY_HOST: gateway
+  #     GATEWAY_PORT: 8000
+  #     PORT: 3000
+  #   volumes:
+  #     - ./landing:/app
+  #     - /app/node_modules # protect container node_modules from overwrite
+  #   links:
+  #     - gateway
+
+
+  # test-landing:
+  #   build: ./landing
+  #   command: yarn test --watchAll
+  #   environment:
+  #     NODE_ENV: test
+  #   volumes:
+  #     - ./landing:/app
+  #     - /app/node_modules
+
 
   webclient:
     image: registry.trustedlife.app/full-stack-starter-webclient
     build:
-      context: ./webclient
+      context: ./webclient/webclient
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
@@ -65,20 +94,11 @@ services:
       GATEWAY_PORT: 8000
       PORT: 3000
     volumes:
-      - ./webclient:/app
+      - ./webclient/webclient:/app
       - /app/node_modules # protect container node_modules from overwrite
     links:
       - gateway
 
-
-  test-webclient:
-    build: ./webclient
-    command: yarn test --watchAll
-    environment:
-      NODE_ENV: test
-    volumes:
-      - ./webclient:/app
-      - /app/node_modules
 
   gateway:
     image: registry.trustedlife.app/full-stack-starter-gateway
@@ -113,11 +133,11 @@ services:
       - ./gateway:/app
       - /app/node_modules # protect container node_modules from overwrite
 
-  test-gateway:
-    build: ./gateway
-    command: yarn test --watchAll
-    environment:
-      NODE_ENV: test
-    volumes:
-      - ./gateway:/app
-      - /app/node_modules
+  # test-gateway:
+  #   build: ./gateway
+  #   command: yarn test --watchAll
+  #   environment:
+  #     NODE_ENV: test
+  #   volumes:
+  #     - ./gateway:/app
+  #     - /app/node_modules

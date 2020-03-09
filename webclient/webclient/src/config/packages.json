@@ -1,0 +1,7 @@
+{
+  "sw": {
+    "pushSubscriptions": false
+  },
+  "relay": false,
+  "sockets": false
+}

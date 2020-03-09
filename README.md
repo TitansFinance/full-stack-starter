@@ -18,7 +18,7 @@ or
     .
     ├── gateway - NodeJS GraphQL gateway service
     ├── microservice - NodeJS Microservice template
-    ├── webclient - NextJS Webclient and server rendering service
+    ├── landing - NextJS Webclient and server rendering service
     └── data - temp folder for persistent application state data (ie redis, postgres)
 ```
 

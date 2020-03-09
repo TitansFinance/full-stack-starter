@@ -5,9 +5,6 @@
   "license": "UNLICENSED",
   "main": "index.js",
   "private": true,
-  "engines": {
-    "node": ">=10.0.0 <11.0.0"
-  },
   "scripts": {
     "dev": "NODE_ENV=development nodemon --inspect ./index.js",
     "dev:brk": "NODE_ENV=development nodemon --inspect --inspect-brk ./index.js",

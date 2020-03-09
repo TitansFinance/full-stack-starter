@@ -1,0 +1,97 @@
+// https://www.weave.works/blog/kubernetes-faq-configure-storage-for-bare-metal-cluster
+
+def label = "worker-${UUID.randomUUID().toString()}"
+
+podTemplate(label: label, yaml: """
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: docker
+    image: docker
+    command: ['cat']
+    tty: true
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: dockersock
+    - mountPath: /app
+      name: app
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "256Mi"
+        ephemeral-storage: "500Mi"
+      limits:
+        cpu: "100m"
+        memory: "1024Mi"
+        ephemeral-storage: "1Gi"
+  - name: kubectl
+    command: ['cat']
+    image: lachlanevenson/k8s-kubectl:v1.8.0
+    imagePullPolicy: IfNotPresent
+    tty: true
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: dockersock
+    - mountPath: /app
+      name: app
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "256Mi"
+        ephemeral-storage: "500Mi"
+      limits:
+        cpu: "100m"
+        memory: "1024Mi"
+        ephemeral-storage: "1Gi"
+  volumes:
+  - name: dockersock
+    hostPath:
+      path: /var/run/docker.sock
+  - name: app
+    hostPath:
+      path: /
+"""
+  ) {
+  node(label) {
+    def app
+    def myRepo = checkout scm
+    def gitCommit = myRepo.GIT_COMMIT
+    def gitBranch = myRepo.GIT_BRANCH
+    def shortGitCommit = "${gitCommit[0..10]}"
+    def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
+    def registry = "registry.trustedlife.app"
+    def imageName = "wallet-webclient"
+    def image = "${registry}/${imageName}"
+
+    container('docker') {
+      stage('Build') {
+        checkout scm
+        dir('webclient') {
+          app = docker.build("${image}", "-f Dockerfile.production .")
+        }
+      }
+      stage('Test') {
+        app.inside {
+          sh 'echo "Tests passed"'
+        }
+        docker.withRegistry('https://registry.trustedlife.app') {
+          app.push("latest")
+        }
+      }
+    }
+
+    stage('Deploy (kubectl)') {
+      container('kubectl') {
+        sh """
+          # without tagging, rollout will not be triggered
+          kubectl set image -n trustedlife-testnet deployment/wallet wallet=${image}:latest
+          kubectl set image -n trustedlife-regtest deployment/wallet wallet=${image}:latest
+          # patch, to force rollout (development envs only)
+          kubectl patch -n trustedlife-testnet deployment/wallet -p '{"spec":{"template":{"metadata":{"labels":{"date":"${label}"}}}}}'
+          kubectl patch -n trustedlife-regtest deployment/wallet -p '{"spec":{"template":{"metadata":{"labels":{"date":"${label}"}}}}}'
+          """
+      }
+    }
+  }
+}

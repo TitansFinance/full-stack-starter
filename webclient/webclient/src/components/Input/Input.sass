@@ -1,0 +1,66 @@
+@import '@/variables'
+
+$mobile-input-border-radius: 10px
+$input-border-color: rgb(235, 235, 235)
+$input-border-focus-color: rgb(215, 215, 215)
+$error-message-offset: 3px
+
+.Mobile, .Tablet
+  .Input
+    border: 0
+    border-radius: 0
+    padding: $input-padding
+    font-size: 1.3em
+    position: relative
+    input, input::placeholder
+      color: rgb(150, 150, 150)
+      outline: none
+
+    &.WithInnerButton input
+      padding-right: 2em
+
+
+  .InlineInput
+    display: inline-flex
+    input
+      border: 0
+      outline: none
+
+  .FormInput
+    display: flex
+    flex-direction: column
+    width: 100%
+    padding: 0
+    margin: 0
+    label
+      margin: 0 0 5px 0
+      font-size: 16px
+      color: $blue
+    input
+      color: #151515
+      font-size: 1em
+      padding: $input-padding
+      border-radius: 8px
+      border: 1px solid $input-border-color
+      &:focus
+        border-color: $blue
+      // &::placeholder
+
+    &.error input
+      border-color: $red
+
+    .InputErrorMessage
+      color: $red
+      font-size: .8em
+      padding-top: .4em
+
+    .InnerTextButton
+      position: absolute
+      right: 1em
+      top: 50%
+      transform: translateY(calc(-50% - #{$error-message-offset}))
+      display: flex
+      align-items: center
+      color: rgb(39, 81, 164)
+      cursor: pointer
+

@@ -43,11 +43,11 @@ services:
       - ./microservice:/app
       - /app/node_modules
 
-  webclient:
-    image: registry.trustedlife.app/full-stack-starter-webclient
+  landing:
+    image: registry.trustedlife.app/full-stack-starter-landing
     command: yarn start
     build:
-      context: ./webclient
+      context: ./landing
       dockerfile: Production.Dockerfile
     ports:
       - "80:3000"
@@ -57,7 +57,7 @@ services:
       GATEWAY_PORT: 8000
       PORT: 3000
     volumes:
-      - ./webclient:/app
+      - ./landing:/app
       - /app/node_modules # protect container node_modules from overwrite
     links:
       - gateway

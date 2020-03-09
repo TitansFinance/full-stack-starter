@@ -1,0 +1,42 @@
+@import '@/variables'
+
+.TableRowTransaction
+  display: flex
+  flex-direction: column
+
+  .TableRowTransactionTop
+    display: flex
+    flex-direction: row
+    align-items: center
+    .TableRowTransactionInfo
+      flex-grow: 1
+      .TableSubRow
+        flex-grow: 1
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        &:nth-child(1)
+          font-size: 1em
+        &:nth-child(2)
+          font-size: 0.8em
+        div
+          display: flex
+          align-items: center
+
+  .CurrencyIcon
+    font-size: 2em
+    margin-right: 5px
+
+  .TransactionTableRowStatus
+    display: flex
+    align-items: center
+    color: lighten(black, 50%)
+    svg
+      margin: 0 0.5em 0 0
+
+  .TableRowTransactionDetails
+    flex-direction: column
+    padding-top: 10px
+    .TableSubRow
+      justify-content: space-between

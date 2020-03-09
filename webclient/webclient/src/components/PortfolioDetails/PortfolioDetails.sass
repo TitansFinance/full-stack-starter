@@ -1,0 +1,68 @@
+@import '@/variables'
+
+$portfolio-details-total-balance-height: 30vh
+$portfolio-details-individual-fund-height: 10vh
+$portfolio-details-individual-fund-border-width: 2px
+
+.PortfolioDetails
+  display: flex
+  flex-direction: column
+  background-color: $white
+  // padding: 0 $body-side-spacing
+  padding-bottom: 2vh
+  box-shadow: 0px 3px 5px rgba(200, 200, 200, 0.5)
+
+  .PieChart
+    width: 50%
+
+  .PortfolioDetailsBottom
+    display: flex
+    align-items: center
+    justify-content: center
+
+  .PortfolioDetailsMyPortfolios
+    display: flex
+    flex-wrap: wrap
+    padding-bottom: 2vh
+
+    .PortfolioDetailsIndividualFund
+      display: flex
+      align-items: flex-end
+      justify-content: space-around
+      padding-bottom: 2vh
+      font-size: 0.8em
+      width: calc(50% - #{$portfolio-details-individual-fund-border-width})
+      height: $portfolio-details-individual-fund-height
+      background-color: $white
+      border-bottom: $portfolio-details-individual-fund-border-width solid $light-gray
+      &:nth-child(odd)
+        border-right: $portfolio-details-individual-fund-border-width solid $light-gray
+        transform: translateX(1px)
+      &:nth-child(odd):not(:nth-child(1))
+        transform: translate(1px, -$portfolio-details-individual-fund-height / 1.5)
+      &:nth-child(even)
+        border-left: $portfolio-details-individual-fund-border-width solid $light-gray
+        transform: translate(-1px, 0)
+      &:nth-child(1)
+        height: $portfolio-details-individual-fund-height / 1.5
+      &:nth-child(2)
+        margin-top: $portfolio-details-individual-fund-height / 2
+      .PortfolioDetailsIndividualFundItems
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-evenly
+        border-left: 5px solid blue
+        width: 100%
+        padding: 0.5em 0
+        .PortfolioDetailsIndividualFundIcon
+          display: flex
+          height: 3em
+        .PortfolioDetailsIndividualFundValues
+          display: flex
+          flex-direction: column
+          .PortfolioDetailsIndividualFundValue
+            font-size: 1.4em
+            margin-bottom: 0.1em
+          .PortfolioDetailsIndividualFundAmount
+            color: lighten($font-color-secondary, 40)

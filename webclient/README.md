@@ -1,72 +1,57 @@
-# Webclient
+# Wallet
+The wallet that believers in mainstream digital currency always needed.
 
+## Webclient
+See webclient/README.md
 
-## Dependencies
-- Docker
-- Docker Compose
+## Gateway
+See TrustedLifeGateway repository
 
+## TODO
+- Gateway
+  - Generate Ethereum wallet address for user to transfer ETH, USDT
+  - Generate Bitcoin wallet address for user to transfer BTC
+  - Migrations for Accounts
+  - Migrations for Funds
 
-## File Structure
+- Clients
+  - Provide (QR code?) and address for sending ETH, USDT
+  - Provide (QR code?) and address for sending BTC
+  - Dashboard Page
+  - AccountDetails Page
+  - DepositOptions Page
+    - DepositETH Page
+    - DepositBTC Page
+    - DepositUSDT Page
+    // - DepositUSDCreditCard Page
 
-```
-    .
-    ├── components
-    │       └── App.js - client application root component
-    │
-    ├── constructors
-    │       ├── apollo
-    │       ├── redux
-    │       ├── i18next.js - i18n translations backend bootstrap
-    │       └── next-i18next.js - NextJS i18n SSR translations bootstrap
-    │
-    ├── pages
-    ├── server
-    ├── static
-    │     └── locales - i18n translation files
-    │           ├── en
-    │           └── zh
-    ├── test
-    │     ├── integration
-    │     └── unit
-    │
-    └── styles
+## Product Description
 
-```
+### Wallet
 
-## Setup
+#### Deposit wallets
+- Launch with only BTC, ETH, USDT and add more later on (already supported)
 
-```bash
-yarn setup
-```
+##### Supported currencies: 
+- Currencies: BTC, ETH, LTC, EOS, XRP, XLM, DOGE, etc, all major currencies
+- ETH Tokens: 
+  - Stable coins: USDT, USDC
+  - ERC 721
 
+##### Features
+- Custodian wallet
+- Support fancy transaction reports, showing all transaction and gain/loss
+- Support display of all deposited currencies and the reflected current values in portfolio after all executed trades
+- Allow users to transfer to stable coins and earn nominal interest
+- Support for ERC 721 tokens
+- Support in-wallet browsers, and allow game or other app integrations
+- Support push notifications for all transactions in your wallet, or your wrapper coins
 
-## Run
+##### Versions
+- MVP: with basic technology for deposit, transfer, etc.
+- Full UI/UX design
 
-```bash
-yarn dev
-open http://127.0.0.1:3000
-```
+## Tools
 
+- QR Code - https://www.npmjs.com/package/qrcode
 
-## Test
-
-Tests are split into unit and integration.
-
-```bash
-yarn test:unit  # matches ( test/unit/*.test.js | **/unit.test.js )
-yarn test:unit:watch
-yarn test:integration # matches ( test/integration/*.test.js | **/integration.test.js )
-yarn test:integration:watch
-```
-
-
-## Production
-
-```bash
-yarn start
-```
-
-
-## License
-
-See LICENSE

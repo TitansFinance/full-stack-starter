@@ -1,0 +1,24 @@
+@import '@/variables'
+
+.Table
+  overflow-y: scroll
+  .TableRow
+    padding: 1.25em 0.75em
+    border-bottom: 1px solid rgb(230, 230, 230)
+
+  .TableSubRow
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 2px 0
+    &.Collapsed
+      display: none
+
+  .NoMoreItemsText
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 0.7em
+    padding: 1.4em
+    color: $background-font-color
+    background-color: $background-color
