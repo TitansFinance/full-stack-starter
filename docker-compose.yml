@@ -1,9 +1,8 @@
 version: "3"
 
 services:
-
   postgres:
-    image: postgres
+    image: postgres:11
     ports:
       - "5432:5432"
     environment:
@@ -70,7 +69,6 @@ services:
   #   links:
   #     - gateway
 
-
   # test-landing:
   #   build: ./landing
   #   command: yarn test --watchAll
@@ -79,7 +77,6 @@ services:
   #   volumes:
   #     - ./landing:/app
   #     - /app/node_modules
-
 
   webclient:
     image: registry.trustedlife.app/full-stack-starter-webclient
@@ -98,7 +95,6 @@ services:
       - /app/node_modules # protect container node_modules from overwrite
     links:
       - gateway
-
 
   gateway:
     image: registry.trustedlife.app/full-stack-starter-gateway
