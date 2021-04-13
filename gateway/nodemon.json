@@ -1,0 +1,12 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules",
+    "test",
+    "**/?(*.)+(integration.test).[tj]s?(x)",
+    "**/?(*.)+(unit.test).[tj]s?(x)"
+  ],
+  "verbose": true,
+  "ext": "js,json,jsx,graphql"
+}

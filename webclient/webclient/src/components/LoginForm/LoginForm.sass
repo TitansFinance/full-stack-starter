@@ -1,0 +1,59 @@
+@import '@/variables'
+
+$form-width: 90vw
+
+.Mobile, .Tablet
+  .LoginForm, .ResetPasswordForm
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    .Row
+      padding: 10px 0
+      justify-content: center
+      .InnerRow
+        justify-content: center
+      .Input
+        width: $form-width
+
+    .RememberMeAndForgotPassword
+      display: flex
+      justify-content: space-between
+      .InnerRow
+        justify-content: space-between
+      width: $form-width
+      .RememberMe
+      .ForgotPassword
+
+    .SignInButton
+      width: 90%
+      padding: 1em
+      margin: 1em 0
+
+    .TrailingLink
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 90%
+      margin: 2em 0
+      .Link
+        margin-left: 1em
+
+.LoginForm, .RegisterForm
+  .LanguageSelect
+    margin-top: auto
+    margin-bottom: 2em
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    width: 100%
+    .LanguageSelectButtons
+      margin-top: 1em
+      .Button
+        margin: 0 0.5em
+
+.Desktop .LoginForm
+  max-width: 400px
+  margin: 0 auto
+  height: initial

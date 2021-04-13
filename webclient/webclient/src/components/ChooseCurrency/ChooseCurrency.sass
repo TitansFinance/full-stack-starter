@@ -1,0 +1,38 @@
+@import '@/variables'
+
+.Mobile, .Tablet
+  .ChooseCurrency
+    background-color: white
+    display: flex
+    flex-direction: column
+    .ChooseCurrencyIconList
+      background: url(/static/images/background-stratus.png)
+      background-repeat: no-repeat
+      display: flex
+      flex-direction: row
+      justify-content: space-evenly
+      .CurrencyIcon
+        svg
+          font-size: 50px
+        .CurrencyIconChildren
+          display: flex
+          flex-direction: row
+          justify-content: center
+          align-items: center
+      .CurrencyIconWithLabel
+        display: flex
+        flex-direction: column
+        align-items: center
+        padding: 0.5em
+        border-radius: 8px
+        img
+          height: 50px
+          width: 50px
+        label
+          padding: 0.5em 0 0 0
+
+        &.selected
+          background-color: rgba(200, 200, 200, .25)
+
+      .ChooseCurrencyInfo
+        padding: 1em 0 0 0

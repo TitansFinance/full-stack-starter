@@ -1,0 +1,177 @@
+{
+  "Arbitrage": "套利",
+  "Arbitrage Trades": "套利交易",
+  "Arbitrage Opportunities": "套利机会",
+  "Exchanges": "交易所",
+  "Spread": "传播",
+  "Fee Adjusted Spread": "费用调整后的差价",
+  "Buy": "购买",
+  "Sell": "卖",
+  "Fees": "费用",
+  "day": "天",
+  "month": "月",
+  "year": "年",
+  "Daily": "日常",
+  "Monthly": "每月一次",
+  "Yearly": "每年",
+  "Pending": "有待",
+  "Confirmed": "确认",
+  "External": "外部",
+  "Change": "更改",
+  "Change Password": "更改密码",
+  "Password Changed": "密码已更改",
+  "Current Password": "当前密码",
+  "New Password": "新密码",
+  "Confirm Password": "确认密码",
+  "Cancel": "取消",
+  "Save": "保存",
+  "No more transactions": "没有更多的交易。",
+  "No more notifications": "没有更多通知。",
+  "Username": "用户名",
+  "First Name": "名字",
+  "Last Name": "姓",
+  "Password": "密码",
+  "Confirm Password": "确认密码",
+  "Recipient": "接受者",
+  "Amount": "量",
+  "Destination": "目的地",
+  "Send": "发送",
+  "BALANCE": "平衡",
+  "Deposit": "存款",
+  "Withdrawal": "退出",
+  "WITHDRAW": "退出",
+  "DONE": "完成",
+  "Code": "码",
+  "Email": "电子邮件",
+  "Phone": "电话",
+  "Register": "寄存器",
+  "Coming Soon": "快来了",
+  "PageNames": {
+    "Home": "家",
+    "Fund Projections": "资金",
+    "Fund Admin": "基金管理员",
+    "Register": "寄存器",
+    "Login": "登录",
+    "Reset Password": "重设密码",
+    "Dashboard": "仪表板",
+    "Transactions": "交易",
+    "Loan Calculator": "贷款计算器",
+    "Deposit": "存款",
+    "Funds": "资金",
+    "Withdraw": "退出",
+    "Profile": "轮廓",
+    "Security": "安全",
+    "Settings": "设置",
+    "Notifications": "通知",
+    "About Us": "关于我们",
+    "Legal": "法律"
+  },
+  "ArbitrageOpportunitiesTable": {
+    "NoMore": "没有更多的套利机会"
+  },
+  "Table": {
+    "NoMore": "没有更多的物品了"
+  },
+  "LoginForm": {
+    "Remember me": "记住账号",
+    "Forgot Password?": "忘记密码？",
+    "Sign in": "登入",
+    "Don't have an account?": "没有帐户？",
+    "Sign up": "注册"
+  },
+  "errors": {
+    "auth": {
+      "no-identifier": "需要电子邮件或电话。",
+      "no-user": "没有用户匹配这些凭据。",
+      "no-password": "密码是必需的。",
+      "invalid-password": "密码不正确。",
+      "account-locked-10m": "太多无效尝试。帐户被锁定10分钟。"
+    },
+    "generic": "发生意外的错误。",
+    "network": "无网络连接。"
+  },
+  "RegisterForm": {
+    "Send text": "发短信",
+    "Send email": "发送邮件代码",
+    "Create Wallet": "创建钱包",
+    "Send": "发送",
+    "Resend": "重发",
+    "errors": {
+      "register": {
+        "identifier-required": "需要电子邮件。",
+        "user-exists": "账户存在。请登录。",
+        "no-code": "代码是必需的。",
+        "incorrect-code": "不正确的代码。",
+        "password-required": "密码是必需的。",
+        "invalid-password": "密码无效。"
+      },
+      "requestEmailVerificationCode": {
+        "no-email": "需要电子邮件。"
+      }
+    }
+  },
+  "SideMenu": {
+    "Log Out": "登出"
+  },
+  "ChooseCurrency": {
+    "Deposit": "存款",
+    "info": "<h4>保护我的CRYPTO！</h4><p>加密货币的价值增值和匿名性吸引了黑客！甚至交易都被黑了。您是否有信心保护自己的资产？</p><p>MX Bank使用最高级别的安全性并控制流程以防范威胁和漏洞。</p><p>类似于您的银行如何保护您的资产，我们保证您的加密资产安全。</p> <h4>投资UPDSIDE！</h4> <p>仅向值得信赖的公司投资加密资金！与传统投资一样，保证高回报是不可持续的。任何人都认为论坛cna在没有要求你的资金的情况下变得富有。</p><p>MX Bank只与可信赖公司的资金合作，因此你可以选择符合风险承受能力和信心的资金。</p>"
+  },
+  "WithdrawCurrency": {
+    "no-balance": "没有余额退出。"
+  },
+  "FundsCarousel": {
+    "title": "资金",
+    "BUY": "购买"
+  },
+  "RecentTransactions": {
+    "title": "最近的交易",
+    "button-content": "查看全部"
+  },
+  "TableRowTransaction": {
+    "Type": "类型",
+    "Status": "状态",
+    "From": "从",
+    "To": "至",
+    "Value": "值",
+    "Fees": "费用",
+    "Timestamp": "时间戳",
+    "Transactions": "交"
+  },
+  "TransactionsPage": {
+    "view": "视图",
+    "all-currencies": "所有货币",
+    "TableTransactions": {
+      "title": "交"
+    }
+  },
+  "UserSettingsGeneralPage": {
+    "section-titles": [
+      "货币",
+      "语言",
+      "通知"
+    ]
+  },
+  "NotificationsPage": {
+    "templates": {
+      "TX_REQUESTED": "要求{{amount}} {{currency}}的交易",
+      "ACCOUNT_DEPOSIT_COMPLETED": "已收到{{amount}} {{currency}}的存款",
+      "ACCOUNT_WITHDRAW_REQUESTED": "已请求提取{{amount}} {{currency}}",
+      "ACCOUNT_WITHDRAW_COMPLETED": "已完成{{amount}} {{currency}}的提款",
+      "TX_COMPLETED": "{{amount}} {{currency}}交易完成",
+      "SECURITY_UPDATED": "安全设置{{settings}}已更新",
+      "PROFILE_UPDATED": "配置文件设置已更新",
+      "MARKET_MOVEMENT": "您的投资组合价值变动了{{direction}} {{percentage}}%",
+      "EMAIL_VERIFICATION_CODE_REQUESTED": "已请求电子邮件验证码",
+      "ACCOUNT_PASSWORD_CHANGED": "帐户密码已更改"
+    },
+    "Unread Notifications": "未读通知",
+    "Mark Read": "马克读"
+  },
+  "LoanCalculatorPage": {
+    "Choose a crypto asset": "选择加密资产",
+    "Enter amount": "输入金额",
+    "NoMinimum": "无需支付最低费用",
+    "InterestTemplate": "来自{{rate}}％每{{duration}} APR的利息"
+  }
+}

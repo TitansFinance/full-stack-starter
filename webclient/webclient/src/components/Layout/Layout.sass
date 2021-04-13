@@ -1,0 +1,27 @@
+@import '@/variables'
+
+.Desktop
+  .Main
+    padding: 10px
+  .Private .Main
+  .Public .Main
+
+.Mobile, .Tablet
+  .Main
+    position: relative
+    top: $mobile-header-height
+  &.Public
+    .Main
+      background-color: white
+      .Page
+        margin: 0
+  &.Private
+    .Main
+      display: flex
+      min-height: calc(100vh - #{$mobile-header-height})
+      background-color: $background-color
+      .Page
+        margin-top: $mobile-page-top-margin
+        width: 100%
+      .PageSettings
+        padding: 0 1em

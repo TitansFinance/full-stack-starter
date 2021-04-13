@@ -1,0 +1,43 @@
+@import '@/variables'
+
+.Button
+  cursor: pointer
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  border: 0
+  border-radius: 8px
+  color: $button-font-color-primary
+  background-color: $button-color-primary
+  outline: none
+
+  &.Disabled
+    opacity: 0.6
+
+
+  &.ButtonPrimary
+    color: $button-font-color-primary
+    background-color: $button-color-primary
+    &.ButtonSelected
+
+  &.FormButton
+    font-size: 1.3em
+    padding: 1.3em
+
+  &.SettingsButton
+    border-radius: 4px
+    padding: 1em
+    color: black
+    background-color: transparent
+    border: 1px solid rgb(180, 180, 180)
+    &.ButtonSelected
+      color: white
+      background-color: rgb(20, 106, 213)
+      border: 1px solid rgb(20, 106, 213)
+
+  &.DoneButton
+    width: (calc(100% - 2em))
+    padding: 1em
+    border: 0
+    border-radius: 8px
+    margin: auto

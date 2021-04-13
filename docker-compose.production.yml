@@ -1,0 +1,97 @@
+version: "3"
+
+services:
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    sysctls:
+      net.core.somaxconn: "65535"
+
+  microservice:
+    image: registry.trustedlife.app/full-stack-starter-microservice
+    build:
+      context: ./microservice
+      dockerfile: Dockerfile
+    command: yarn dev
+    environment:
+      NODE_ENV: production
+      POSTGRES_USER: postgres
+      POSTGRES_HOST: postgres
+      POSTGRES_DATABASE: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_PORT: 5432
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
+      - postgres
+    links:
+      - redis
+      - postgres
+    volumes:
+      - ./microservice:/app
+      - /app/node_modules
+
+  landing:
+    image: registry.trustedlife.app/full-stack-starter-landing
+    command: yarn start
+    build:
+      context: ./landing
+      dockerfile: Production.Dockerfile
+    ports:
+      - "80:3000"
+    environment:
+      NODE_ENV: production
+      GATEWAY_HOST: gateway
+      GATEWAY_PORT: 8000
+      PORT: 3000
+    volumes:
+      - ./landing:/app
+      - /app/node_modules # protect container node_modules from overwrite
+    links:
+      - gateway
+
+  gateway:
+    image: registry.trustedlife.app/full-stack-starter-gateway
+    build:
+      context: ./gateway
+      dockerfile: Production.Dockerfile
+    command: yarn start
+    ports:
+      - "8000:8000"
+      - "3133:3133"
+    environment:
+      NODE_ENV: production
+      MIGRATE_ON_BOOTSTRAP: "true"
+      SEED_ON_BOOTSTRAP: "false"
+      EXPRESS_PORT: 8000
+      EXPRESS_SESSION_SECRET: "keyboard cat"
+      POSTGRES_USER: postgres
+      POSTGRES_HOST: postgres
+      POSTGRES_DATABASE: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_PORT: 5432
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      SOCKET_IO_PORT: "3133"
+    links:
+      - postgres
+      - redis
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./gateway:/app
+      - /app/node_modules # protect container node_modules from overwrite
+

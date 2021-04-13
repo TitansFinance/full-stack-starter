@@ -1,0 +1,5 @@
+scalar JSON
+scalar Upload
+
+directive @AuthorizedUser on QUERY | MUTATION | FIELD_DEFINITION
+directive @RequireRoleAdmin on QUERY | MUTATION | FIELD_DEFINITION

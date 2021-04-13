@@ -1,0 +1,50 @@
+def label = "worker-${UUID.randomUUID().toString()}"
+
+podTemplate(label: label, containers: [
+  containerTemplate(name: 'docker', image: 'docker', ttyEnabled: true, command: 'cat'),
+  containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:v1.8.0', command: 'cat', ttyEnabled: true),
+],
+volumes: [
+  hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+  hostPathVolume(mountPath: '/app', hostPath: '/'),
+]) {
+  node(label) {
+    def app
+    def myRepo = checkout scm
+    def gitCommit = myRepo.GIT_COMMIT
+    def gitBranch = myRepo.GIT_BRANCH
+    def shortGitCommit = "${gitCommit[0..10]}"
+    def previousGitCommit = sh(script: "git rev-parse ${gitCommit}~", returnStdout: true)
+    def registry = "registry.trustedlife.app"
+    def imageName = "trustedlife-gateway"
+    def image = "${registry}/${imageName}"
+
+    container('docker') {
+      stage('Build') {
+        checkout scm
+        dir('gateway') {
+          app = docker.build("${image}", "-f Dockerfile.production .")
+        }
+      }
+      stage('Test') {
+        app.inside {
+          sh 'echo "Tests passed"'
+        }
+        docker.withRegistry('https://registry.trustedlife.app') {
+          app.push("latest")
+        }
+      }
+    }
+
+    stage('Deploy (kubectl)') {
+      container('kubectl') {
+        sh """
+          # without tagging, rollout will not be triggered
+          kubectl set image -n titans-finance deployment/gateway gateway=${image}:latest
+          # patch, to force rollout (development envs only)
+          kubectl patch -n titans-finance deployment/gateway -p '{"spec":{"template":{"metadata":{"labels":{"date":"${label}"}}}}}'
+          """
+      }
+    }
+  }
+}

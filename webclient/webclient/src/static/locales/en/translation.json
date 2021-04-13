@@ -1,0 +1,177 @@
+{
+  "Arbitrage": "Arbitrage",
+  "Arbitrage Trades": "Arbitrage Trades",
+  "Arbitrage Opportunities": "Arbitrage Opportunities",
+  "Exchanges": "Exchanges",
+  "Spread": "Spread",
+  "Fee Adjusted Spread": "Fee Adjusted Spread",
+  "Buy": "Buy",
+  "Sell": "Sell",
+  "Fees": "Fees",
+  "day": "day",
+  "month": "month",
+  "year": "year",
+  "Daily": "Daily",
+  "Monthly": "Monthly",
+  "Yearly": "Yearly",
+  "Pending": "Pending",
+  "Confirmed": "Confirmed",
+  "External": "External",
+  "Change": "Change",
+  "Change Password": "Change Password",
+  "Password Changed": "Password Changed",
+  "Current Password": "Current Password",
+  "New Password": "New Password",
+  "Confirm Password": "Confirm Password",
+  "Cancel": "Cancel",
+  "Save": "Save",
+  "No more transactions": "No more transactions",
+  "No more notifications": "No more notifications",
+  "Username": "Username",
+  "First Name": "First Name",
+  "Last Name": "Last Name",
+  "Password": "Password",
+  "Confirm Password": "Confirm Password",
+  "Recipient": "Recipient",
+  "Amount": "Amount",
+  "Destination": "Destination",
+  "Send": "Send",
+  "BALANCE": "BALANCE",
+  "Deposit": "Deposit",
+  "Withdrawal": "Withdrawal",
+  "WITHDRAW": "WITHDRAW",
+  "DONE": "DONE",
+  "Code": "Code",
+  "Email": "Email",
+  "Phone": "Phone",
+  "Register": "Register",
+  "Coming Soon": "Coming Soon",
+  "PageNames": {
+    "Home": "Home",
+    "Fund Projections": "Fund Projections",
+    "Fund Admin": "Fund Admin",
+    "Register": "Register",
+    "Login": "Login",
+    "Reset Password": "Reset Password",
+    "Dashboard": "Dashboard",
+    "Transactions": "Transactions",
+    "Loan Calculator": "Loan Calculator",
+    "Deposit": "Deposit",
+    "Funds": "Funds",
+    "Withdraw": "Withdraw",
+    "Profile": "Profile",
+    "Security": "Security",
+    "Settings": "Settings",
+    "Notifications": "Notifications",
+    "About Us": "About Us",
+    "Legal": "Legal"
+  },
+  "ArbitrageOpportunitiesTable": {
+    "NoMore": "No more arbitrage opportunities"
+  },
+  "Table": {
+    "NoMore": "No more items."
+  },
+  "LoginForm": {
+    "Remember me": "Remember me",
+    "Forgot Password?": "Forgot Password?",
+    "Sign in": "Sign in",
+    "Don't have an account?": "Don't have an account?",
+    "Sign up": "Sign up"
+  },
+  "errors": {
+    "auth": {
+      "no-identifier": "Email or phone is required.",
+      "no-user": "No user matches those credentials.",
+      "password-required": "Password is required.",
+      "invalid-password": "Password is incorrect.",
+      "account-locked-10m": "Too many invalid attempts. Account is locked for 10 minutes."
+    },
+    "generic": "An unexpected error has occurred.",
+    "network": "No network connection."
+  },
+  "RegisterForm": {
+    "Send text": "Send text",
+    "Send email": "Send email",
+    "Create Wallet": "Create Wallet",
+    "Send": "Send",
+    "Resend": "Resend",
+    "errors": {
+      "register": {
+        "identifier-required": "Email is required.",
+        "user-exists": "Account exists. Please log in.",
+        "no-code": "Code is required.",
+        "incorrect-code": "Incorrect code.",
+        "password-required": "Password is required.",
+        "invalid-password": "Password is invalid."
+      },
+      "requestEmailVerificationCode": {
+        "no-email": "Email is required."
+      }
+    }
+  },
+  "SideMenu": {
+    "Log Out": "Log Out"
+  },
+  "ChooseCurrency": {
+    "Deposit": "Deposit",
+    "info": "<h4>PROTECT MY CRYPTO!</h4><p>Value appreciation and anonymous nature of cryptocurrencies attract hackers! Even exchanges were hacked. Are you confident in protecting your assets?</p><p>MX Bank uses the highest level of security and has controlled processes to protect against threats and vulnerabilities.</p><p>Similar to how your bank protects your fiat moey, we keep your crypto assets safe.</p><h4>INVEST FOR THE UPDSIDE!</h4><p>Invest your crypto money with trusted companies only! Like traditional investments, guaranteed high returns are not sustainable. Anybody iwth that forumla cna grow rich without demanding your money.</p><p>MX Bank only partners with funds from credible companies so you can pick funds that fit with your risk tolerance and confidence.</p>"
+  },
+  "WithdrawCurrency": {
+    "no-balance": "No balance to withdraw."
+  },
+  "FundsCarousel": {
+    "title": "Funds",
+    "BUY": "BUY"
+  },
+  "RecentTransactions": {
+    "title": "Recent Transactions",
+    "button-content": "View All"
+  },
+  "TableRowTransaction": {
+    "Type": "Type",
+    "Status": "Status",
+    "From": "From",
+    "To": "To",
+    "Value": "Value",
+    "Fees": "Fees",
+    "Timestamp": "Timestamp",
+    "Transactions": "Transactions"
+  },
+  "TransactionsPage": {
+    "view": "VIEW",
+    "all-currencies": "All Currencies",
+    "TableTransactions": {
+      "title": "Transactions"
+    }
+  },
+  "UserSettingsGeneralPage": {
+    "section-titles": [
+      "Currency",
+      "Language",
+      "Notifications"
+    ]
+  },
+  "NotificationsPage": {
+    "templates": {
+      "TX_REQUESTED": "Transaction of {{amount}} {{currency}} requested",
+      "ACCOUNT_DEPOSIT_COMPLETED": "Deposit of {{amount}} {{currency}} received",
+      "ACCOUNT_WITHDRAW_REQUESTED": "Withdrawal of {{amount}} {{currency}} requested",
+      "ACCOUNT_WITHDRAW_COMPLETED": "Withdrawal of {{amount}} {{currency}} completed",
+      "TX_COMPLETED": "Transaction of {{amount}} {{currency}} completed",
+      "SECURITY_UPDATED": "Security setting \"{{settings}}\" was updated",
+      "PROFILE_UPDATED": "Profile settings were updated",
+      "MARKET_MOVEMENT": "Your portfolio value changed {{direction}} {{percentage}}%",
+      "EMAIL_VERIFICATION_CODE_REQUESTED": "Email verification code was requested",
+      "ACCOUNT_PASSWORD_CHANGED": "Account password was changed"
+    },
+    "Unread Notifications": "Unread Notifications",
+    "Mark Read": "Mark Read"
+  },
+  "LoanCalculatorPage": {
+    "Choose a crypto asset": "Choose a crypto asset",
+    "Enter amount": "Enter amount",
+    "NoMinimum": "No minimum payment required",
+    "InterestTemplate": "Interest from {{rate}}% per {{duration}} APR"
+  }
+}

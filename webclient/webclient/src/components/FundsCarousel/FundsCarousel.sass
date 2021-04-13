@@ -1,0 +1,36 @@
+@import '@/variables'
+
+.FundsCarousel
+  .Carousel
+    width: 100%
+    // height: 40vh
+
+  .FundsCarouselSlide
+    display: flex
+    flex-direction: column
+    div
+      min-height: 1rem
+      padding: 0.5rem 0
+    .FundsCarouselAUM
+      display: flex
+      flex-direction: row
+      justify-content: flex-end
+    .FundsCarouselLongName
+      display: flex
+      flex-direction: row
+      justify-content: flex-start
+    .FundsCarouselDescription
+      // height: 100px
+      margin: 0.5rem 0
+      // overflow-y: scroll
+      display: flex
+      flex-direction: column
+    .FundsCarouselBuy
+      padding: 0 0 1rem 0
+      .FundsCarouselBuyButton
+        width: 100%
+        background-color: $color-secondary
+        color: $font-color-secondary
+        border: 0
+        padding: 10px
+        border-radius: 8px
