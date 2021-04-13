@@ -1,0 +1,4 @@
+type TokenData {
+  accessToken: String!
+  refreshToken: String
+}

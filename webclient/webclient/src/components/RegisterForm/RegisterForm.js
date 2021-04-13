@@ -303,7 +303,10 @@ const RegisterForm = ({
 
 export default compose(
   graphql(gql`{
-    supportedLanguages
+    supportedLanguages {
+      key
+      name
+    }
   }`)
 )(withRouter(
   withRegister(

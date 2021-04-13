@@ -35,10 +35,9 @@ const Logo = ({
 export default compose(
   graphql(gql`{
     tenant {
-      _id
-      tenantId
+      id
+      slug
       domains
-      arbitrageEnabled
       branding {
         brandingIconUrl
         logoUrl

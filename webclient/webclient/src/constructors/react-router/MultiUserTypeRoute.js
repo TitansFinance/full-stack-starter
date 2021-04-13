@@ -23,7 +23,10 @@ const MultiUserTypeRoute = ({
           me {
             id
             userType
-            language
+            language {
+              key
+              name
+            }
             currency
             username
           }

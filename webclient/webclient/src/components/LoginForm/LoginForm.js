@@ -138,7 +138,9 @@ export default compose(
       language
       currency
     }
-    supportedCurrencies
-    supportedLanguages
+    supportedLanguages {
+      key
+      name
+    }
   }`)
 )(withRouter(LoginForm))

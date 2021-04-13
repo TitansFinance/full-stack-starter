@@ -1,0 +1,24 @@
+type Branding {
+  brandingIconUrl: String
+  logoUrl: String
+  faviconUrl: String
+  colorPrimary: String
+  fontColorPrimary: String
+  colorSecondary: String
+  fontColorSecondary: String
+  colorTertiary: String
+  fontColorTertiary: String
+}
+
+type Tenant {
+  id: ID!
+  name: String!
+  slug: String!
+  domains: [String!]!
+  branding: Branding!
+  authRequireMFA: Boolean!
+  authRequireEmail: Boolean!
+  authRequirePhone: Boolean!
+  authMfaEnabled: Boolean!
+  authPrimaryIdentifier: String!
+}

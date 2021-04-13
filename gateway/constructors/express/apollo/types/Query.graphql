@@ -1,4 +1,6 @@
 type Query {
   health: Boolean
   supportedLanguages: [SupportedLanguage]
+  me: User
+  tenant: Tenant
 }

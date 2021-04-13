@@ -1,2 +1,6 @@
 type Mutation {
+  login: TokenData!
+  logout: Boolean
+  signup: TokenData!
+  refreshToken: TokenData!
 }

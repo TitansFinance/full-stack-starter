@@ -103,9 +103,10 @@ export default compose(
     me {
       id
       language
-      currency
     }
-    supportedCurrencies
-    supportedLanguages
+    supportedLanguages {
+      key
+      name
+    }
   }`)
 )(UserSettingsGeneralPage)

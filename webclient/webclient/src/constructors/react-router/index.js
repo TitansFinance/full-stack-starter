@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
-import { gql } from 'apollo-boost'
-import { Query } from 'react-apollo'
+// import { gql } from 'apollo-boost'
+// import { Query } from 'react-apollo'
 import {
   Router,
-  Link,
-  Redirect,
-  Route,
+  // Link,
+  // Redirect,
+  // Route,
   Switch,
 } from 'react-router-dom'
-import { withRouter } from 'react-router'
+// import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 
 import history from '@/constructors/history'
@@ -22,24 +22,17 @@ import ResetPasswordPage from '@/pages/ResetPasswordPage'
 /* Private */
 import AboutPage from '@/pages/AboutPage'
 import DashboardPage from '@/pages/DashboardPage'
-import DepositPage from '@/pages/DepositPage'
-import FundsPage from '@/pages/FundsPage'
-import FundProjectionsPage from '@/pages/FundProjectionsPage'
-import FundAdminPage from '@/pages/FundAdminPage'
 import LegalPage from '@/pages/LegalPage'
 import NotificationsPage from '@/pages/NotificationsPage'
-import WithdrawPage from '@/pages/WithdrawPage'
 import UserSettingsProfilePage from '@/pages/UserSettingsProfilePage'
 import UserSettingsSecurityPage from '@/pages/UserSettingsSecurityPage'
 import UserSettingsGeneralPage from '@/pages/UserSettingsGeneralPage'
-import TransactionsPage from '@/pages/TransactionsPage'
-import LoanCalculatorPage from '@/pages/LoanCalculatorPage'
 
 import Layout from '@/components/Layout'
 import ResizeListener from '@/components/ResizeListener'
 
 import DualRoute from './DualRoute'
-import PublicRoute from './PublicRoute'
+// import PublicRoute from './PublicRoute'
 import PublicOnlyRoute from './PublicOnlyRoute'
 import PrivateRoute from './PrivateRoute'
 
@@ -65,18 +58,11 @@ const getRouter = ({ layout, history }) => {
             />
             <Layout.Mobile.Private>
               <PrivateRoute exact path="/about" component={AboutPage} />
-              <PrivateRoute exact path="/loancalculator" component={LoanCalculatorPage} />
-              <PrivateRoute exact path="/deposit" component={DepositPage} />
-              <PrivateRoute exact path="/funds" component={FundsPage} />
-              <PrivateRoute exact path="/funds/:id/projections" component={FundProjectionsPage.Mobile} />
-              <PrivateRoute exact path="/funds/:id/admin" component={FundAdminPage.Mobile} />
               <PrivateRoute exact path="/legal" component={LegalPage} />
               <PrivateRoute exact path="/notifications" component={NotificationsPage} />
               <PrivateRoute exact path="/settings/user/profile" component={UserSettingsProfilePage} />
               <PrivateRoute exact path="/settings/user/security" component={UserSettingsSecurityPage} />
               <PrivateRoute exact path="/settings/user/general" component={UserSettingsGeneralPage} />
-              <PrivateRoute exact path="/transactions" component={TransactionsPage} />
-              <PrivateRoute exact path="/withdraw" component={WithdrawPage} />
             </Layout.Mobile.Private>
           </Switch>
         </Router>
@@ -99,18 +85,11 @@ const getRouter = ({ layout, history }) => {
             />
             <Layout.Desktop.Private>
               <PrivateRoute exact path="/about" component={AboutPage} />
-              <PrivateRoute exact path="/loancalculator" component={LoanCalculatorPage} />
-              <PrivateRoute exact path="/deposit" component={DepositPage} />
-              <PrivateRoute exact path="/funds" component={FundsPage} />
-              <PrivateRoute exact path="/funds/:id/projections" component={FundProjectionsPage.Desktop} />
-              <PrivateRoute exact path="/funds/:id/admin" component={FundAdminPage.Desktop} />
               <PrivateRoute exact path="/legal" component={LegalPage} />
               <PrivateRoute exact path="/notifications" component={NotificationsPage} />
               <PrivateRoute exact path="/settings/user/profile" component={UserSettingsProfilePage} />
               <PrivateRoute exact path="/settings/user/security" component={UserSettingsSecurityPage} />
               <PrivateRoute exact path="/settings/user/general" component={UserSettingsGeneralPage} />
-              <PrivateRoute exact path="/transactions" component={TransactionsPage} />
-              <PrivateRoute exact path="/withdraw" component={WithdrawPage} />
             </Layout.Desktop.Private>
           </Switch>
         </Router>

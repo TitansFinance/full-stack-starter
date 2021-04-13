@@ -3,10 +3,10 @@ import Backend from 'i18next-xhr-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
-const loadPath = (process.env.GATEWAY_URL || window.location.origin) + '/static/locales/{{lng}}/{{ns}}.json'
+const loadPath = (process.env.FRONTEND_GATEWAY_URL || window.location.origin) + '/static/locales/{{lng}}/{{ns}}.json'
 console.log('\n\n')
 console.log('process.env.PORT', process.env.PORT)
-console.log('process.env.GATEWAY_URL', process.env.GATEWAY_URL)
+console.log('process.env.FRONTEND_GATEWAY_URL', process.env.FRONTEND_GATEWAY_URL)
 console.log('process.env.GATEWAY_HOST', process.env.GATEWAY_HOST)
 console.log('process.env.GATEWAY_PORT', process.env.GATEWAY_PORT)
 console.log('\n\n')

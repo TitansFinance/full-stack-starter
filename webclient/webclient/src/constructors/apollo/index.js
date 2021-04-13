@@ -44,12 +44,13 @@ const httpMiddlewareLink = new ApolloLink((operation, forward) =>
 
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: process.env.APOLLO_HTTP_URI || `${`${process.env.GATEWAY_URL}` || window.location.origin}/graphql`,
+  uri: process.env.APOLLO_HTTP_URI || `${`${process.env.FRONTEND_GATEWAY_URL}` || window.location.origin}/graphql`,
 })
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: process.env.APOLLO_WEBSOCKET_URI || `${process.env.NODE_ENV === 'production' ? 'wss' : 'ws'}://${process.env.GATEWAY_HOST || window.location.host}/subscriptions`,
+  uri: process.env.APOLLO_WEBSOCKET_URI || `${process.env.NODE_ENV === 'production' ? 'wss' : 'ws'}://${
+    process.env.FRONTEND_GATEWAY_HOST ? `${process.env.FRONTEND_GATEWAY_HOST}:${process.env.FRONTEND_GATEWAY_PORT}` : window.location.host}/subscriptions`,
   options: {
     reconnect: true,
     connectionParams: async () => {
@@ -82,7 +83,7 @@ const requestLink = split(
   httpLink,
 )
 
-const uploadLink = createUploadLink({ uri: `${process.env.GATEWAY_URL || window.location.origin}/graphql` })
+const uploadLink = createUploadLink({ uri: `${process.env.FRONTEND_GATEWAY_URL || window.location.origin}/graphql` })
 const terminalLink = split(isUpload, uploadLink, requestLink)
 
 

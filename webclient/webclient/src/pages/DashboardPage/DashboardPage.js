@@ -23,13 +23,6 @@ import Button from '@/components/Button'
 import Table from '@/components/Table'
 import Card from '@/components/Card'
 import PortfolioSnapshot from '@/components/PortfolioSnapshot'
-import RecentTransactions from '@/components/RecentTransactions'
-import ArbitrageOpportunitiesTable from '@/components/ArbitrageOpportunitiesTable'
-import ArbitrageTradesTable from '@/components/ArbitrageTradesTable'
-import ExchangesTableWithData from '@/components/ExchangesTableWithData'
-import ChooseDepositCurrency from '@/components/ChooseDepositCurrency'
-import RebalancesTableWithData from '@/components/RebalancesTableWithData'
-import FundsCarousel from '@/components/FundsCarousel'
 import Loading from '@/components/Loading'
 import FeatureFlag from '@/components/FeatureFlag'
 
@@ -42,55 +35,11 @@ const withQuery = compose(
       id
       username
       email
-      accounts {
-        balance
-        currency {
-          ticker
-        }
-      }
-      portfolios {
-        balance
-        fund {
-          name
-        }
-      }
-      wallets {
-        type
-        balance
-      }
-      transactions(tickers: null, offset: 0, limit: 3) {
-        id
-        transaction { status }
-        addressTo
-        addressFrom
-        amount
-        createdAt
-        updatedAt
-        currency {
-          ticker
-          name
-        }
-      }
-    }
-    funds {
-      id
-      name
-      ticker
-      assetsUnderManagement
-      details
-    }
-    currentAverageExchangeRates(symbols: ["ETH/USDT", "BTC/USDT", "CNY/USD"]) {
-      symbol
-      rate
-      numerator
-      denominator
     }
     tenant {
-      _id
-      tenantId
+      id
       name
       domains
-      arbitrageEnabled
       branding {
         brandingIconUrl
         logoUrl
@@ -115,29 +64,14 @@ const DashboardPageMobile = withQuery(({ data }) => {
   if (data.error) return console.error(data.error)
   if (data.loading) return <Loading />
 
-  const {
-    me,
-    funds,
-    portfolios,
-    tenant,
-  } = data
+  const { me, tenant } = data
 
-  document.title = `${tenant.name} - Fund Projections`
+  document.title = `${tenant.name} - FullStackStarterKitTitle`
 
   return (
     <Suspense fallback={<Loading />}>
       <div className="Page DashboardPage">
-        <PortfolioSnapshot me={me} expandable defaultExpanded={false} />
-        <FeatureFlag flag={tenant.arbitrageEnabled}>
-          <ArbitrageOpportunitiesTable.Mobile noMoreItemsText={null} limit={6} />
-          <ExchangesTableWithData.Mobile />
-          <ArbitrageTradesTable.Mobile limit={6} />
-        </FeatureFlag>
-        <FeatureFlag flag={!tenant.arbitrageEnabled}>
-          <ChooseDepositCurrency />
-          {/*<FundsCarousel funds={funds} />*/}
-          <RecentTransactions transactions={me.transactions} />
-        </FeatureFlag>
+      DashboardPage
       </div>
     </Suspense>
   )
@@ -148,12 +82,7 @@ const DashboardPageDesktop =  withQuery(({ data }) => {
   if (data.error) return console.error(data.error)
   if (data.loading) return <Loading />
 
-  const {
-    me,
-    funds,
-    portfolios,
-    tenant,
-  } = data
+  const { me, tenant } = data
 
   document.title = `${tenant.name} - Fund Projections`
 
@@ -161,18 +90,7 @@ const DashboardPageDesktop =  withQuery(({ data }) => {
     <Suspense fallback={<Loading />}>
       <div className="Page DashboardPage">
         <Row type="flex" justify="space-around">
-          <Col span={24}>
-            <ExchangesTableWithData.Desktop />
-          </Col>
-          <Col span={24}>
-            <RebalancesTableWithData.Desktop />
-          </Col>
-          <Col span={24}>
-            <ArbitrageOpportunitiesTable.Desktop noMoreItemsText={null} limit={6} />
-          </Col>
-          <Col span={24}>
-            <ArbitrageTradesTable.Desktop limit={6} />
-          </Col>
+          DashboardPageDesktop
         </Row>
       </div>
     </Suspense>

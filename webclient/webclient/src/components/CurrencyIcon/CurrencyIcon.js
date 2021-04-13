@@ -15,7 +15,7 @@ const CurrencyIcon = ({
   return (
     <img
       className={cx({ CurrencyIcon: true, [className]: Boolean(className) })}
-      src={process.env.GATEWAY_URL + `/static/images/tickers/${ticker}@2x.png`}
+      src={process.env.FRONTEND_GATEWAY_URL + `/static/images/tickers/${ticker}@2x.png`}
       alt={ticker}
       {...rest}
     />

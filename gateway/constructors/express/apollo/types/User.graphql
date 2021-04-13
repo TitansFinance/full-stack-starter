@@ -1,0 +1,12 @@
+type User {
+  id: ID!
+  email: String!
+  name: String!
+  firstName: String!
+  lastName: String!
+  username: String!
+  userType: String!
+  language: String!
+  currency: String!
+  tenant: Tenant!
+}

@@ -28,7 +28,10 @@ const UpdatePasswordForm = compose(
       email
       phone
       phoneCountryCode
-      language
+      language {
+        key
+        name
+      }
     }
   }`),
 )(withRequestPhoneVerificationCode(({
