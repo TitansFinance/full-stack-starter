@@ -1,0 +1,8 @@
+type StripeCharge {
+  id: ID!
+  userId: Int!
+  orderId: Int!
+  stripePaymentIntentId: Int!
+  chargeRef: String!
+  status: String
+}

@@ -1,0 +1,7 @@
+type StripePaymentIntent {
+  id: ID!
+  userId: Int!
+  orderId: Int!
+  clientSecret: String!
+  status: String!
+}

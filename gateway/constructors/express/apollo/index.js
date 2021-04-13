@@ -16,6 +16,7 @@ module.exports = ({
   models,
   sockets,
   redis,
+  ...rest
 }) => new ApolloServer({
   schema,
   resolvers,
@@ -31,30 +32,49 @@ module.exports = ({
         pubsub,
         axios,
         qs,
+        ...rest,
       }
 
+      let session
+      let user
+      let userId
       if (params.connection) {
         console.log('[ApolloServerExpress] Websocket build context')
-        let user
         // TODO sanitize and session input
-        const id = path(['user', 'id'], params.connection.context.session)
-        if (id) {
-          user = await models.Users.findOne({ where: { id } })
+        session = params.connection.context.session
+        const userId = path(['user', 'id'], session)
+        if (userId) {
+          user = await models.Users.findOne({ where: { id: userId } })
         }
 
         return {
           ...ctx,
           ...params.connection.context,
+          session,
           user,
         }
       } else {
         console.log('[ApolloServerExpress] HTTP build context')
         const { req, res } = params
+        try {
+          session = await sessionFromRequest({ req })
+          userId = path(['user', 'id'], session)
+          if (userId) {
+            user = await models.Users.findOne({ where: { id: userId } })
+          }
+        } catch (err) {
+          console.error(err)
+          if (err.name === 'JsonWebTokenError') {
+            return res.status(401).send({ error: 'invalid-token' })
+          }
+        }
+
         return {
           ...ctx,
           req,
           res,
-          session: await sessionFromRequest({ req }),
+          session,
+          user,
         }
       }
     } catch (error) {

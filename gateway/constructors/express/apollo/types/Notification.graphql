@@ -1,0 +1,7 @@
+type Notification {
+  type: String
+  data: JSON
+  read: Boolean
+  createdAt: String
+  updatedAt: String
+}

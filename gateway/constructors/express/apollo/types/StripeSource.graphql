@@ -1,0 +1,9 @@
+type StripeSource {
+  id: ID!
+  userId: Int!
+  sourceRef: String!
+  isDefault: Boolean!
+  disabled: Boolean!
+  description: String
+  metadata: JSON
+}

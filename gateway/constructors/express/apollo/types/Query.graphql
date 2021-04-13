@@ -1,6 +1,8 @@
 type Query {
   health: Boolean
-  supportedLanguages: [SupportedLanguage]
-  me: User
+  ping: String!
   tenant: Tenant
+  supportedLanguages: [SupportedLanguage]
+  products: [Product]
+  me: User @AuthorizedUser
 }

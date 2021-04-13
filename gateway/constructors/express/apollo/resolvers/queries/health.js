@@ -6,3 +6,4 @@ module.exports = async (_, $, {}, ast) => {
     return false
   }
 }
+

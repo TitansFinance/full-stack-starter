@@ -1,0 +1,15 @@
+type ProductProvider {
+  slug: String!
+  id: ID!
+}
+type Investment {
+  id: ID!
+  slug: String!
+  provider: ProductProvider
+}
+type Product {
+  id: ID!
+  type: String!
+  currency: Currency
+  investment: Investment
+}

@@ -1,6 +1,74 @@
 type Mutation {
-  login: TokenData!
+  # Auth
+  signup(
+    role: String
+    email: String
+    emailVerificationCode: String
+    password: String
+    firstName: String
+    lastName: String
+    language: String
+    birthDate: String
+    token: String
+    referrerEmail: String
+    phone: String
+    phoneVerificationCode: String
+    phoneCountryCode: Int
+    sex: String
+    gender: String
+    zipcode: Int
+  ): SignupResponse
+
+  login(
+    email: String!
+    password: String!
+  ): LoginResponse
+
+  refreshToken(
+    email: String!
+    password: String!
+  ): LoginResponse
+
   logout: Boolean
-  signup: TokenData!
-  refreshToken: TokenData!
+
+  resetPassword(
+    email: String!
+    code: String!
+    password: String
+  ): Boolean
+
+  # User Verification
+  requestEmailVerificationCode(
+    email: String!
+    language: String
+  ): Boolean
+  submitEmailVerificationCode(
+    email: String!
+    code: String
+  ): Boolean
+  requestPhoneVerificationCode(phone: String, phoneCountryCode: Int, language: String): Boolean
+  submitPhoneVerificationCode(phone: String, code: String): Boolean
+
+  # uploadImage(file: Upload!): File!
+  # uploadProfileImage(file: Upload!): User @AuthorizedUser
+  # multipleUpload(files: [Upload!]!): [File!]!
+
+  # updateUser(employerId: Int): User @AuthorizedUser
+  # updateMe(input: UserInput): User @AuthorizedUser
+  # markMyNotificationsRead: [Notification] @AuthorizedUser
+
+  # Wallet
+  # withdrawCurrency(
+  #   ticker: String
+  #   amount: String
+  #   recipientAddress: String
+  #   phoneVerificationCode: String
+  # ): Boolean @AuthorizedUser
+
+  createOrder(amount: String!, productId: ID!): Order @AuthorizedUser
+  createStripePaymentIntent(amount: String!, currency: Currency!, productId: ID!): StripePaymentIntent @AuthorizedUser
+  createStripeSource(plaidToken: String!, account: String!, description: String, metadata: JSON): StripeSource @AuthorizedUser
+  updateStripeSource(id: ID!, values: JSON): StripeSource @AuthorizedUser
+  setDefaultStripeSource(id: ID!): [StripeSource] @AuthorizedUser
+  createStripeCharge(orderId: ID!): StripeCharge @AuthorizedUser
 }

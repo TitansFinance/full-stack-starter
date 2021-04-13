@@ -1,11 +1,9 @@
-module.exports = async (_, $, { req, session, models, user, pubsub }, ast) => {
+module.exports = async (_, $, { models, user, ...rest }, ast) => {
   try {
-    return await models.Users.findOne({ where: { id } })
+    return user
   } catch (error) {
-    console.error(`errors.${__filename}`, error)
-    return null
+    console.error(`errors.queries.${__filename}`, error)
+    return false
   }
 }
-
-
 

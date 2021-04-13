@@ -1,0 +1,4 @@
+type SignupResponse {
+  user: User
+  tokenData: TokenData
+}

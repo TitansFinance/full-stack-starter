@@ -1,12 +1,49 @@
 type User {
   id: ID!
-  email: String!
-  name: String!
-  firstName: String!
-  lastName: String!
-  username: String!
-  userType: String!
-  language: String!
-  currency: String!
+  firstName: String
+  lastName: String
+  email: String
+  username: String
+  isEmailVerified: Boolean
+  phone: String
+  isPhoneVerified: Boolean
+  phoneCountryCode: Int
+  birthDate: String
+  role: String
+  consumerType: String
+  sex: String
+  gender: String
+  profileImageUrl: String
+  language: String
+  currency: String
+  settings: JSON
+  security: JSON
+  createdAt: String
+  updatedAt: String
+  stripeSources: [StripeSource]
+  pendingBalance: String!
   tenant: Tenant!
+}
+
+input UserInput {
+  id: ID
+  firstName: String
+  lastName: String
+  email: String @constraint(format: "email", maxLength: 255)
+  isEmailVerified: Boolean
+  phone: String
+  isPhoneVerified: Boolean
+  phoneCountryCode: Int
+  birthDate: String
+  role: String
+  consumerType: String
+  sex: String
+  gender: String
+  profileImageUrl: String
+  language: String
+  currency: String
+  settings: JSON
+  security: JSON
+  createdAt: String
+  updatedAt: String
 }

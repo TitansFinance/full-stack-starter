@@ -28,16 +28,18 @@ module.exports = async (_, payload, { req, res, models, sequelize, redis }) => {
       email,
       // emailVerificationCode,
       // phoneVerificationCode,
-      token,
-      referrerEmail,
       password,
     } = payload
 
     if (!email) throw new Error('errors.signup.email-required')
     if (!password) throw new Error('errors.signup.password-required')
-    if (!token) throw new Error('errors.signup.token-required')
-      debugger;
-    const user = await models.Users.createWithSignupToken(payload, { transaction })
+
+    const user = await models.Users.create({
+      ...payload,
+      passwordHash: await bcrypt.hash(payload.password, SALT_ROUNDS),
+      isEmailVerified: false, // TODO
+    })
+
     if (!user) throw new Error('errors.signup.generic')
     // await verifyEmail({ redis, email, emailVerificationCode })
 

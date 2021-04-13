@@ -11,11 +11,10 @@ module.exports = context => {
     router.use('/api', APIRouter)
   }
 
-  router.get('/api/*', (req, res) => res.status(404).send())
 
-  router.get('/health', async (req, res) => {
-    return res.status(200).send({ health: 'HEALTHY' })
-  })
+  router.get('/health', (req, res, next) => res.send({ healthy: true }))
+  router.get('/version', (req, res, next) => res.send({ version: context.version }))
+  router.get('/api/*', (req, res) => res.status(404).send())
 
   return router
 }

@@ -4,7 +4,6 @@ const { path } = require('ramda')
  * AuthorizedUserDirective MUTATING
 **/
 module.exports = async (next, source, args, context) => {
-  console.log('[AuthorizedUserDirective] Adding policy context.')
   try {
     const { models, session } = context
 

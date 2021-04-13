@@ -22,7 +22,6 @@ import history from '@/constructors/history'
 import Button from '@/components/Button'
 import Table from '@/components/Table'
 import Card from '@/components/Card'
-import PortfolioSnapshot from '@/components/PortfolioSnapshot'
 import Loading from '@/components/Loading'
 import FeatureFlag from '@/components/FeatureFlag'
 

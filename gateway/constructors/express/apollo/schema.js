@@ -1,35 +1,27 @@
+const fs = require('fs')
+const path = require('path')
 const { makeExecutableSchema } = require('graphql-tools')
 const { mergeTypeDefs } = require('graphql-toolkit')
+const ConstraintDirective = require('graphql-constraint-directive')
 
 const resolvers = require('./resolvers')
 const AuthorizedUserDirective = require('./directives/AuthorizedUserDirective')
 const RequireRoleAdminDirective = require('./directives/RequireRoleAdminDirective')
 
-// TODO just read from files to reduce boilerplate
-const root = require('./types/root.graphql')
-const Query = require('./types/Query.graphql')
-const Mutation = require('./types/Mutation.graphql')
-const File = require('./types/File.graphql')
-const SupportedLanguage = require('./types/SupportedLanguage.graphql')
-const User = require('./types/User.graphql')
-const Tenant = require('./types/Tenant.graphql')
-const TokenData = require('./types/TokenData.graphql')
+const requireFilesArrayFromDir = (dirPath) => {
+  return fs.readdirSync(path.resolve(__dirname, dirPath)).map((file) => {
+    return require(`${dirPath}/${file}`)
+  })
+}
 
+const typeDefs = requireFilesArrayFromDir('./types')
 
 module.exports = makeExecutableSchema({
-  typeDefs: mergeTypeDefs([
-    root,
-    Query,
-    Mutation,
-    File,
-    SupportedLanguage,
-    User,
-    Tenant,
-    TokenData,
-  ]),
+  typeDefs: mergeTypeDefs(typeDefs),
   resolvers,
   directiveResolvers: {
     AuthorizedUser: AuthorizedUserDirective,
     RequireRoleAdmin: RequireRoleAdminDirective,
   },
+  schemaDirectives: { constraint: ConstraintDirective },
 })
